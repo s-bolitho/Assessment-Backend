@@ -23,5 +23,12 @@ const { getIsEghaCool } = require('./controller')
 
 app.get("/api/isEghaCool", getIsEghaCool)
 
+const {getGame, deleteGame, createGame, updateGame} = require('./controller.js')
+
+app.get('/api/games', getGame)
+app.delete('/api/games/:id', deleteGame)
+app.post('/movies/movies', createGame)
+app.put('/api/movies/:id', updateGame)
+
 app.listen(4000, () => console.log("Server running on 4000"));
 

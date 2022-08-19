@@ -1,4 +1,50 @@
+const games = require('./db.json')
+let globalID = 11
+
 module.exports = {
+    getGame: (req, res) => {
+        res.status(200).send(games)
+    },
+    deleteGame: (req, res) => {
+        let index = games.findIndex((movie) => {
+            return games.id === +req.params.id
+        })
+        movies.splice(index, 1)
+        res.status(200).send(games)
+    },
+    createGame: (req, res) => {
+        let {title, rating, imageURL} = req.body
+
+        let newGame = {
+            id: globalID, 
+            title,
+            rating,
+            imageURL
+        }
+        games.push(newGame)
+        res.status(200).send(games)
+        globalID++
+    },
+    updateGame: (req, res) => {
+        let {id} = req.params
+        let {type} = req.body
+        let index = games.findIndex((game) => {
+        return +game.id === +id
+        })
+        if (games[index].rating === 5 && type === "plus") {
+            res.status(400).send("cannot go above 5");
+          } else if (games[index].rating === 0 && type === "minus") {
+            res.status(400).send("cannot go below 0");
+          } else if (type === "plus") {
+            games[index].rating++;
+            res.status(200).send(games);
+          } else if (type === "minus") {
+            games[index].rating--;
+            res.status(200).send(games);
+          } else {
+            res.sendStatus(400);
+          }
+        },
 
     getCompliment: (req, res) => {
         const compliments = ["Gee, you're a smart cookie!", "Cool shirt!", "Your Javascript skills are stellar."];
