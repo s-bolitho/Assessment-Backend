@@ -19,4 +19,21 @@ module.exports = {
         res.status(200).send(randomFortune)
     },
 
+    getWillSamPassThisBootcamp: (req, res) => {
+        const passBc = ["yes", "Yes", "YES", "YES!", "YEEEEEEEEEEEEEESSSSSSSSSSSSSSSS!!!!!!!!!!"]
+
+        let randomIndex = Math.floor(Math.random() * passBc.length)
+        let randomPassBc = passBc[randomIndex]
+
+        res.status(200).send(randomPassBc)
+    },
+
+    getIsEghaCool: (req, res) => {
+        const isEghaCool = ["YES!", "YES!!", "SO COOL!"]
+
+        let randomIndex = Math.floor(Math.random() * isEghaCool.length)
+        let randomIsEghaCool = isEghaCool[randomIndex]
+
+        res.status(200).send(randomIsEghaCool)
+    }
 }

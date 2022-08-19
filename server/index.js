@@ -15,4 +15,13 @@ const { getFortune } = require('./controller')
 
 app.get("/api/fortune", getFortune)
 
+const { getWillSamPassThisBootcamp } = require('./controller')
+
+app.get("/api/willSamPassThisBootcamp", getWillSamPassThisBootcamp);
+
+const { getIsEghaCool } = require('./controller')
+
+app.get("/api/isEghaCool", getIsEghaCool)
+
 app.listen(4000, () => console.log("Server running on 4000"));
+
